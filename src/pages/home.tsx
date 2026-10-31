@@ -3,12 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+
 import { 
   Calendar, 
   Clock, 
-  Heart, 
+
   MapPin, 
   Phone, 
   Shield, 
@@ -20,12 +19,7 @@ import {
   CheckCircle2,
   Menu,
   X,
-  Ambulance,
-  Microscope,
-  Baby,
-  Eye,
-  Bone,
-  Brain,
+
   Leaf,
   Droplets,
   Sun,
@@ -33,7 +27,7 @@ import {
   Flower2,
   Sparkles,
   HandHeart,
-  Home
+
 } from "lucide-react";
 import { useState } from "react";
 
