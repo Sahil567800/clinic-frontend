@@ -1,14 +1,14 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { 
-  Calendar, 
+ 
   Clock, 
 
-  MapPin, 
+ 
   Phone, 
   Shield, 
   Star, 
@@ -17,8 +17,8 @@ import {
   Activity,
   ArrowRight,
   CheckCircle2,
-  Menu,
-  X,
+
+ 
 
   Leaf,
   Droplets,
@@ -29,7 +29,7 @@ import {
   HandHeart,
 
 } from "lucide-react";
-import { useState } from "react";
+
 
 
 // Animation variants
@@ -53,10 +53,8 @@ const scaleIn = {
   transition: { duration: 0.5 }
 };
 
-export default function JaihindClinicHomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
-  const headerOpacity = useTransform(scrollY, [0, 100], [0, 1]);
+export default function Home() {
+
 
   const services = [
     {
@@ -159,95 +157,7 @@ export default function JaihindClinicHomePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <motion.header 
-        className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-teal-100"
-        style={{ opacity: headerOpacity }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <motion.div 
-              className="flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="bg-teal-100 p-2 rounded-lg">
-                <Leaf className="h-6 w-6 text-teal-600" />
-              </div>
-              <span className="text-xl font-bold text-foreground">Jaihind Clinic</span>
-            </motion.div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6">
-              {["Home", "Services", "Doctors", "About", "Contact"].map((item) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-sm font-medium text-muted-foreground hover:text-teal-600 transition-colors"
-                  whileHover={{ y: -2 }}
-                >
-                  {item}
-                </motion.a>
-              ))}
-            </nav>
-
-            <div className="hidden md:flex items-center gap-4">
-              <Button variant="outline" size="sm" className="border-teal-200 text-teal-700 hover:bg-teal-50">
-                <Phone className="mr-2 h-4 w-4" />
-                Emergency: 911
-              </Button>
-              <Button size="sm" className="bg-teal-600 hover:bg-teal-700">
-                <Calendar className="mr-2 h-4 w-4" />
-                Book Appointment
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <motion.div 
-            className="md:hidden border-t border-teal-100 bg-background"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-          >
-            <div className="px-4 py-4 space-y-3">
-              {["Home", "Services", "Doctors", "About", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="block text-sm font-medium text-muted-foreground hover:text-teal-600"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-              <div className="pt-4 space-y-2">
-                <Button variant="outline" className="w-full border-teal-200 text-teal-700 hover:bg-teal-50">
-                  <Phone className="mr-2 h-4 w-4" />
-                  Emergency: 911
-                </Button>
-                <Button className="w-full bg-teal-600 hover:bg-teal-700">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Book Appointment
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </motion.header>
+     
 
       {/* Hero Section */}
       <section id="home" className="relative pt-16 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
@@ -398,7 +308,7 @@ export default function JaihindClinicHomePage() {
               focusing on treating the individual as a whole.
             </p>
           </motion.div>
-
+            
           <motion.div 
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={staggerContainer}
@@ -643,67 +553,9 @@ export default function JaihindClinicHomePage() {
           </motion.div>
         </div>
       </section>
-
+      
       {/* Footer */}
-      <footer className="bg-teal-50 border-t border-teal-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="bg-teal-100 p-2 rounded-lg">
-                  <Leaf className="h-6 w-6 text-teal-600" />
-                </div>
-                <span className="text-xl font-bold">Jaihind Clinic</span>
-              </div>
-              <p className="text-sm text-muted-foreground">
-                Providing natural homeopathic healing with compassion and excellence since 2005.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-teal-900">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#home" className="hover:text-teal-600">Home</a></li>
-                <li><a href="#services" className="hover:text-teal-600">Services</a></li>
-                <li><a href="#doctors" className="hover:text-teal-600">Doctors</a></li>
-                <li><a href="#contact" className="hover:text-teal-600">Contact</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-teal-900">Treatments</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Chronic Diseases</li>
-                <li>Pediatric Care</li>
-                <li>Skin & Hair</li>
-                <li>Women's Health</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold mb-4 text-teal-900">Contact Info</h4>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-teal-500" />
-                  123 Wellness Center, Mumbai, India
-                </li>
-                <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-teal-500" />
-                  +91 98765 43210
-                </li>
-                <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-teal-500" />
-                  Mon-Sat: 9:00 AM - 8:00 PM
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-teal-200 mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2026 Jaihind Clinic. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+     
     </div>
   );
 }

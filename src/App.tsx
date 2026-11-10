@@ -1,12 +1,23 @@
 
 import './App.css'
-import ClinicHomePage from './pages/home'
+import MainLayout from './components/layout/mainlayout'
+import AboutPage from './pages/about'
+import HomePage from './pages/home'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 function App() {
 
 
   return (
     <>
-<ClinicHomePage></ClinicHomePage>
+    <BrowserRouter>
+    <Routes>
+      <Route element={<MainLayout/>}>
+        <Route path='/' element={<HomePage/>}></Route>
+        <Route path='/about' element={<AboutPage/>}></Route>
+      </Route>
+      </Routes>
+      </BrowserRouter>
+      {/* <Home></Home> */}
     </>
   )
 }
